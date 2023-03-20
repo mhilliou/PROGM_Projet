@@ -1,7 +1,6 @@
-PROGM_Projet
-Gravec Théo & Hilliou Marine
+# PROGM_Projet
 
-# progm_projet
+Gravec Théo & Hilliou Marine
 
 A new Flutter project.
 
@@ -17,6 +16,3 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-#� �P�R�O�G�M�_�P�r�o�j�e�t�
-�
-�
