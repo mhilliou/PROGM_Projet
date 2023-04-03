@@ -21,10 +21,11 @@ class _Game1State extends State<Game1> {
     }
     quiz.nextQuestion();
     if (quiz.isFinished()) {
-      quiz.reset();
+      int scoreDef = quiz.getScore();
       Navigator.push(context, MaterialPageRoute(
-        builder: (context) => EndGamePage(),
+        builder: (context) => EndGamePage(score: scoreDef),
       ),);
+      quiz.reset();
     }
     setState(() {});
   }
@@ -33,28 +34,27 @@ class _Game1State extends State<Game1> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 71, 71),
-      /*appBar: AppBar(
-        title: const Text('Game 1'),
-      ),*/
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+        child: ListView(
           children: [
             Row(
               children: [
-                IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back, color: Colors.black),),
+                IconButton(onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const SoloPage()));
+                }, icon: const Icon(Icons.arrow_back, color: Colors.black),),
                 Expanded(child: Container()),
                 Container(
                   padding: const EdgeInsets.only(right: 15),
-                  child: Text('Score : ${quiz.score}', textAlign: TextAlign.right, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),),
+                  child: Text('Score : ${quiz.score} pts', textAlign: TextAlign.right, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),),
                 ),
               ],
             ),
             Container(
+              height: 200,
               padding: const EdgeInsets.only(top: 70, bottom: 30),
               child: Text(quiz.getQuestion(), 
               textAlign: TextAlign.center, 
-              style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),),
             ),
             Container(
               height: 90,
@@ -63,7 +63,7 @@ class _Game1State extends State<Game1> {
                 onPressed: () {
                   checkAnswer(quiz.getAnswer1());
                 },
-                child: Text(quiz.getAnswer1(), style: const TextStyle(fontSize: 20, color: Colors.black),),
+                child: Text(quiz.getAnswer1(), style: const TextStyle(fontSize: 17, color: Colors.black),),
               ),
             ),
             Container(
@@ -73,7 +73,7 @@ class _Game1State extends State<Game1> {
                 onPressed: () {
                   checkAnswer(quiz.getAnswer2());
                 },
-                child: Text(quiz.getAnswer2(), style: const TextStyle(fontSize: 20, color: Colors.black),),
+                child: Text(quiz.getAnswer2(), style: const TextStyle(fontSize: 17, color: Colors.black),),
               ),
             ),
             Container(
@@ -83,7 +83,7 @@ class _Game1State extends State<Game1> {
                 onPressed: () {
                   checkAnswer(quiz.getAnswer3());
                 },
-                child: Text(quiz.getAnswer3(), style: const TextStyle(fontSize: 20, color: Colors.black),),
+                child: Text(quiz.getAnswer3(), style: const TextStyle(fontSize: 17, color: Colors.black),),
               ),
             )
         ],),
@@ -129,6 +129,11 @@ class Quiz {
   int questionNumber = 0;
   List<int> alreadyAsked = [];
 
+  Quiz() {
+    questionNumber = Random().nextInt(questions.length);
+    alreadyAsked.add(questionNumber);
+  }
+
   String getAnswer1() {
     return questions[questionNumber].answer1;
   }
@@ -159,6 +164,8 @@ class Quiz {
       while (alreadyAsked.contains(questionNumber)) {
         questionNumber = Random().nextInt(questions.length);
       }
+      print(alreadyAsked);
+      print(questionNumber);
       alreadyAsked.add(questionNumber);
     }
   }
