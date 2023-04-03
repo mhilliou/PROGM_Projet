@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:progm_projet/solo.dart';
-
+import 'solo.dart';
 import 'endgame.dart';
 
 class Game1 extends StatefulWidget {
@@ -17,19 +16,26 @@ class _Game1State extends State<Game1> {
   void checkAnswer(String answer) {
     if (answer == quiz.getCorrectAnswer()) {
       quiz.score++;
-    }
-    quiz.nextQuestion();
-    if (quiz.isFinished()) {
-      int scoreDef = quiz.getScore();
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => EndGamePage(score: scoreDef),
-        ),
-      );
-      quiz.reset();
+      quiz.displayBonneReponse();
+    } else {
+      quiz.displayMauvaiseReponse();
     }
     setState(() {});
+    Future.delayed(const Duration(seconds: 1), () {
+      quiz.resetStatutReponse();
+      quiz.nextQuestion();
+      if (quiz.isFinished()) {
+        int scoreDef = quiz.getScore();
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => EndGamePage(score: scoreDef),
+          ),
+        );
+        quiz.reset();
+      }
+      setState(() {});
+    });
   }
 
   @override
@@ -114,7 +120,18 @@ class _Game1State extends State<Game1> {
                     style: const TextStyle(fontSize: 17, color: Colors.black),
                   ),
                 ),
-              )
+              ),
+              Container(
+                padding: const EdgeInsets.only(top: 30),
+                child: Text(
+                  quiz.getStatutReponse(),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+              ), // Pour afficher le message de bonne ou mauvaise réponse
             ],
           ),
         ));
@@ -210,6 +227,7 @@ class Quiz {
   int score = 0;
   int questionNumber = 0;
   List<int> alreadyAsked = [];
+  String statutReponse = '';
 
   Quiz() {
     questionNumber = Random().nextInt(questions.length);
@@ -236,6 +254,14 @@ class Quiz {
     return questions[questionNumber].correctAnswer;
   }
 
+  String getStatutReponse() {
+    return statutReponse;
+  }
+
+  void resetStatutReponse() {
+    statutReponse = '';
+  }
+
   bool isFinished() {
     return alreadyAsked.length == 10;
   }
@@ -246,10 +272,16 @@ class Quiz {
       while (alreadyAsked.contains(questionNumber)) {
         questionNumber = Random().nextInt(questions.length);
       }
-      print(alreadyAsked);
-      print(questionNumber);
       alreadyAsked.add(questionNumber);
     }
+  }
+
+  void displayBonneReponse() {
+    statutReponse = 'Bonne réponse !';
+  }
+
+  void displayMauvaiseReponse() {
+    statutReponse = 'Mauvaise réponse !';
   }
 
   int getScore() {
@@ -260,5 +292,6 @@ class Quiz {
     score = 0;
     questionNumber = 0;
     alreadyAsked = [];
+    statutReponse = '';
   }
 }
