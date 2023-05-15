@@ -6,6 +6,11 @@ import 'dart:math';
 
 
 class Game5 extends StatefulWidget {
+  final bool aleatoire;
+  final int nbJeu;
+  final int scoreJeu;
+
+  const Game5({super.key, required this.aleatoire, required this.nbJeu, required this.scoreJeu});
   @override
   _MyAppState createState() => _MyAppState();
 }

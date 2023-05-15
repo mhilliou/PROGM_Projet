@@ -72,7 +72,7 @@ class _AdversairePageState extends State<AdversairePage> {
       }
       if (startGame) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Game1()));
+            context, MaterialPageRoute(builder: (context) => Game1(aleatoire: true, nbJeu: 0, scoreJeu: 0)));
       }
     });
          
@@ -115,7 +115,7 @@ class _AdversairePageState extends State<AdversairePage> {
       }
       if (startGame) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Game1()));
+            context, MaterialPageRoute(builder: (context) => Game1(aleatoire: true, nbJeu: 0, scoreJeu: 0)));
       }
     });
         //  receiveMessage(req);
@@ -134,7 +134,7 @@ class _AdversairePageState extends State<AdversairePage> {
   }
 
   void choixJeu() {
-    List<Widget> jeux = [const Game1()];
+    List<Widget> jeux = [const Game1(aleatoire: true, nbJeu: 0, scoreJeu: 0)];
     print("jeu avant if $jeu");
     if(jeu == null){
       int index = Random().nextInt(jeux.length);
@@ -160,7 +160,7 @@ class _AdversairePageState extends State<AdversairePage> {
       }
       if (startGame) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Game1()));
+            context, MaterialPageRoute(builder: (context) => Game1(aleatoire: true, nbJeu: 0, scoreJeu: 0)));
       }
     });
   }

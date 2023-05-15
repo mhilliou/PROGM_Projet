@@ -361,6 +361,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_signature_pad/flutter_signature_pad.dart';
 
 class Game7 extends StatefulWidget {
+  final bool aleatoire;
+  final int nbJeu;
+  final int scoreJeu;
+
+  const Game7({super.key, required this.aleatoire, required this.nbJeu, required this.scoreJeu});
+  
   @override
   _DrawingPageState createState() => _DrawingPageState();
 }

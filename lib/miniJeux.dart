@@ -31,25 +31,25 @@ class MiniJeu extends StatelessWidget {
   void handleCardTap(String title, BuildContext context) {
     switch (title) {
       case 'Quiz V':
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const Game1()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Game1(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
         break;
       case 'Course V':
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Game2()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Game2(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
         break;
       case 'Voix X':
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const Game3()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Game3(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
         break;
       case 'Plat V':
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Game4()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Game4(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
         break;
       case 'Angle X':
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Game5()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Game5(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
         break;
       case 'Gestes V':
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Game6()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Game6(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
         break;
       case 'Schéma X':
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Game7()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Game7(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
         break;
     }
   }

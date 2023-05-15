@@ -73,7 +73,7 @@ class EndGamePage extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const Game1()),
+                        MaterialPageRoute(builder: (context) => const Game1(aleatoire: false, nbJeu: 0, scoreJeu: 0)),
                       );
                     },
                     child: Text(

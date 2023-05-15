@@ -3,9 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 
 import 'endgame.dart';
+import 'endgamealeatoire.dart';
 import 'solo/solo.dart';
 
 class Game4 extends StatefulWidget {
+  final bool aleatoire;
+  final int nbJeu;
+  final int scoreJeu;
+
+  const Game4({super.key, required this.aleatoire, required this.nbJeu, required this.scoreJeu});
   @override
   _Game4State createState() => _Game4State();
 }
@@ -73,9 +79,12 @@ class _Game4State extends State<Game4> {
         score = 1;
       }
     }
-    Navigator.push(
+    !widget.aleatoire ? Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => EndGamePage(score: score)),
+    ) : Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => EndGamePageAleatoire(score: widget.scoreJeu + score, nbJeu: widget.nbJeu + 1)),
     );
   }
 

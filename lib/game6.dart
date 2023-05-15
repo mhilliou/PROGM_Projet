@@ -2,9 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:progm_projet/endgame.dart';
 import 'dart:math';
 
+import 'endgamealeatoire.dart';
 import 'solo/solo.dart';
 
 class Game6 extends StatefulWidget {
+  final bool aleatoire;
+  final int nbJeu;
+  final int scoreJeu;
+
+  const Game6({super.key, required this.aleatoire, required this.nbJeu, required this.scoreJeu});
+
   @override
   _Game6State createState() => _Game6State();
 }
@@ -120,9 +127,12 @@ class _Game6State extends State<Game6> {
         if (gesturesCount == 5) {
           result = 'Jeu terminé';
           isGameFinished = true;
-          Navigator.push(
+          !widget.aleatoire ? Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => EndGamePage(score: score)),
+          ) : Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => EndGamePageAleatoire(score: widget.scoreJeu + score, nbJeu: widget.nbJeu + 1)),
           );
         } else {
           currentCommand = getRandomCommand();

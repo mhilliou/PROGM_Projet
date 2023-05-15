@@ -5,6 +5,9 @@ import '../game1.dart';
 import '../game2.dart';
 import '../game3.dart';
 import '../game4.dart';
+import '../game5.dart';
+import '../game6.dart';
+import '../game7.dart';
 import '../home.dart';
 import '../miniJeux.dart';
 
@@ -17,9 +20,19 @@ class SoloPage extends StatefulWidget {
 
 class _SoloPageState extends State<SoloPage> {
   void choixJeu() {
-    List<Widget> jeux = [Game1()];
+    bool aleatoire = true;
+    List<Widget> jeux = [
+      Game1(aleatoire: true, nbJeu: 0, scoreJeu: 0),
+      Game2(aleatoire: true, nbJeu: 0, scoreJeu: 0),
+      //Game3(aleatoire: true, nbJeu: 0, scoreJeu: 0),
+      Game4(aleatoire: true, nbJeu: 0, scoreJeu: 0),
+      //Game5(aleatoire: true, nbJeu: 0, scoreJeu: 0),
+      Game6(aleatoire: true, nbJeu: 0, scoreJeu: 0),
+      //Game7(aleatoire: true, nbJeu: 0, scoreJeu: 0),
+    ];
     int index = Random().nextInt(jeux.length);
-    Navigator.push(context, MaterialPageRoute(builder: (context) => jeux[index]));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => jeux[index]));
   }
 
   @override
@@ -33,14 +46,19 @@ class _SoloPageState extends State<SoloPage> {
         child: ListView(
           children: [
             Container(
-              padding: EdgeInsets.only(top: screenHeight * 0.01, right: screenWidth * 0.04),
+              padding: EdgeInsets.only(
+                  top: screenHeight * 0.01, right: screenWidth * 0.04),
               alignment: Alignment.topRight,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomePage()));
                 },
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 136, 136)),
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      const Color.fromARGB(255, 255, 136, 136)),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(screenHeight * 0.03),
@@ -63,10 +81,15 @@ class _SoloPageState extends State<SoloPage> {
                   child: Column(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(top: screenHeight * 0.02, bottom: screenHeight * 0.02),
+                        padding: EdgeInsets.only(
+                            top: screenHeight * 0.02,
+                            bottom: screenHeight * 0.02),
                         child: Text(
                           'MODE DE JEU',
-                          style: TextStyle(fontSize: screenWidth * 0.06, fontWeight: FontWeight.bold, color: Colors.white),
+                          style: TextStyle(
+                              fontSize: screenWidth * 0.06,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
                         ),
                       ),
                       Container(
@@ -74,14 +97,19 @@ class _SoloPageState extends State<SoloPage> {
                         height: screenHeight * 0.07,
                         decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(screenWidth * 0.02),
+                          borderRadius:
+                              BorderRadius.circular(screenWidth * 0.02),
                           color: const Color.fromARGB(255, 255, 95, 20),
                         ),
                         child: TextButton(
                           onPressed: () {
                             choixJeu();
                           },
-                          child: const Text('ALÉATOIRE', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white)),
+                          child: const Text('ALÉATOIRE',
+                              style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white)),
                         ),
                       ),
                       SizedBox(height: screenHeight * 0.02),
@@ -90,14 +118,22 @@ class _SoloPageState extends State<SoloPage> {
                         height: screenHeight * 0.07,
                         decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(screenWidth * 0.02),
+                          borderRadius:
+                              BorderRadius.circular(screenWidth * 0.02),
                           color: const Color.fromARGB(255, 255, 95, 20),
                         ),
                         child: TextButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => MiniJeu()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MiniJeu()));
                           },
-                          child: const Text('MINI-JEUX', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white)),
+                          child: const Text('MINI-JEUX',
+                              style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white)),
                         ),
                       ),
                       SizedBox(height: screenHeight * 0.02),
@@ -107,9 +143,14 @@ class _SoloPageState extends State<SoloPage> {
               ],
             ),
             SizedBox(height: screenHeight * 0.25),
-            TextButton(onPressed: () {
-                
-              }, child: const Text('REGLES DU JEU', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold ,color: Colors.black)), ),
+            TextButton(
+              onPressed: () {},
+              child: const Text('REGLES DU JEU',
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black)),
+            ),
           ],
         ),
       ),

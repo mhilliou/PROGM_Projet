@@ -2,9 +2,13 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:progm_projet/solo/solo.dart';
 import 'endgame.dart';
+import 'endgamealeatoire.dart';
 
 class Game1 extends StatefulWidget {
-  const Game1({super.key});
+  final bool aleatoire;
+  final int nbJeu;
+  final int scoreJeu;
+  const Game1({super.key, required this.aleatoire, required this.nbJeu, required this.scoreJeu});
 
   @override
   State<Game1> createState() => _Game1State();
@@ -26,11 +30,15 @@ class _Game1State extends State<Game1> {
       quiz.nextQuestion();
       if (quiz.isFinished()) {
         int scoreDef = quiz.getScore();
-        Navigator.push(
+        !widget.aleatoire ? Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => EndGamePage(score: scoreDef),
           ),
+        ) : Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => EndGamePageAleatoire(score: widget.scoreJeu + scoreDef, nbJeu: widget.nbJeu)),
         );
         quiz.reset();
       }
