@@ -39,7 +39,7 @@ class _Game2State extends State<Game2> {
         MaterialPageRoute(builder: (context) => EndGamePage(score: 0)),
       ) : Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => EndGamePageAleatoire(score: widget.scoreJeu + 1, nbJeu: widget.nbJeu + 1)),
+        MaterialPageRoute(builder: (context) => EndGamePageAleatoire(score: widget.scoreJeu + 1, nbJeu: widget.nbJeu)),
       );
       //_afficherMessageVictoire();
     }
@@ -95,7 +95,7 @@ class _Game2State extends State<Game2> {
               Container(
                 padding: EdgeInsets.only(right: 0.03 * screenWidth),
                 child: Text(
-                  'Score : ... pts',
+                  'Score : ${widget.scoreJeu} pts',
                   textAlign: TextAlign.right,
                   style: TextStyle(
                     fontSize: 0.04 * screenWidth,

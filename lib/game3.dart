@@ -11,7 +11,12 @@ class Game3 extends StatefulWidget {
   final int nbJeu;
   final int scoreJeu;
 
-  const Game3({Key? key, required this.aleatoire, required this.nbJeu, required this.scoreJeu}) : super(key: key);
+  const Game3(
+      {Key? key,
+      required this.aleatoire,
+      required this.nbJeu,
+      required this.scoreJeu})
+      : super(key: key);
 
   @override
   _Game3State createState() => _Game3State();
@@ -35,12 +40,18 @@ class _Game3State extends State<Game3> {
         isFinished = true;
         timer?.cancel();
         endTimer?.cancel();
-        !widget.aleatoire ? Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    EndGamePage(score: (volume * 10).round())))
-                    : Navigator.push( context, MaterialPageRoute(builder: (context) => EndGamePageAleatoire(score: widget.scoreJeu + (volume * 10).round(), nbJeu: widget.nbJeu + 1)));
+        !widget.aleatoire
+            ? Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        EndGamePage(score: (volume * 10).round())))
+            : Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => EndGamePageAleatoire(
+                        score: widget.scoreJeu + (volume * 10).round(),
+                        nbJeu: widget.nbJeu)));
       });
     });
   }
@@ -174,6 +185,19 @@ class _Game3State extends State<Game3> {
                           icon:
                               const Icon(Icons.arrow_back, color: Colors.black),
                         ),
+                        Expanded(child: Container()),
+                        Container(
+                          padding: EdgeInsets.only(right: 10),
+                          child: Text(
+                            'Score : ${widget.scoreJeu} pts',
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 100),
@@ -205,4 +229,3 @@ class _Game3State extends State<Game3> {
         });
   }
 }
-

@@ -29,13 +29,13 @@ class EndGamePageAleatoire extends StatelessWidget {
   Widget choixJeu() {
     bool aleatoire = true;
     List<Widget> jeux = [
-      Game1(aleatoire: true, nbJeu: nbJeu + 1, scoreJeu: 0),
-      Game2(aleatoire: true, nbJeu: nbJeu + 1, scoreJeu: 0),
-      //Game3(aleatoire: true, nbJeu: nbJeu + 1, scoreJeu: 0),
-      Game4(aleatoire: true, nbJeu: nbJeu + 1, scoreJeu: 0),
-      //Game5(aleatoire: true, nbJeu: nbJeu + 1, scoreJeu: 0),
-      Game6(aleatoire: true, nbJeu: nbJeu + 1, scoreJeu: 0),
-      //Game7(aleatoire: true, nbJeu: nbJeu + 1, scoreJeu: 0),
+      Game1(aleatoire: true, nbJeu: nbJeu + 1, scoreJeu: score),
+      Game2(aleatoire: true, nbJeu: nbJeu + 1, scoreJeu: score),
+      //Game3(aleatoire: true, nbJeu: nbJeu + 1, scoreJeu: score),
+      Game4(aleatoire: true, nbJeu: nbJeu + 1, scoreJeu: score),
+      //Game5(aleatoire: true, nbJeu: nbJeu + 1, scoreJeu: score),
+      Game6(aleatoire: true, nbJeu: nbJeu + 1, scoreJeu: score),
+      //Game7(aleatoire: true, nbJeu: nbJeu + 1, scoreJeu: score),
     ];
     int index = Random().nextInt(jeux.length);
     return jeux[index];
@@ -106,9 +106,9 @@ class EndGamePageAleatoire extends StatelessWidget {
                       child: TextButton(
                         onPressed: () {
                           Navigator.push(
-                              context as BuildContext,
+                              context,
                               MaterialPageRoute(
-                                  builder: (context) => Game1(aleatoire: true, nbJeu: nbJeu + 1, scoreJeu: score)));
+                                  builder: (context) => choixJeu()/*Game1(aleatoire: true, nbJeu: nbJeu + 1, scoreJeu: score)*/));
                         },
                         child: Text(
                           'SUIVANT',

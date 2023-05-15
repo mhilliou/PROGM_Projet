@@ -132,7 +132,7 @@ class _Game6State extends State<Game6> {
             MaterialPageRoute(builder: (context) => EndGamePage(score: score)),
           ) : Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => EndGamePageAleatoire(score: widget.scoreJeu + score, nbJeu: widget.nbJeu + 1)),
+            MaterialPageRoute(builder: (context) => EndGamePageAleatoire(score: widget.scoreJeu + score, nbJeu: widget.nbJeu)),
           );
         } else {
           currentCommand = getRandomCommand();
@@ -144,6 +144,13 @@ class _Game6State extends State<Game6> {
         if (gesturesCount == 5) {
           result = 'Jeu terminé';
           isGameFinished = true;
+          !widget.aleatoire ? Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => EndGamePage(score: score)),
+          ) : Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => EndGamePageAleatoire(score: widget.scoreJeu + score, nbJeu: widget.nbJeu)),
+          );
         } else {
           currentCommand = getRandomCommand();
         }
@@ -177,7 +184,7 @@ Widget build(BuildContext context) {
               Container(
                 padding: EdgeInsets.only(right: 0.03 * screenWidth),
                 child: Text(
-                  'Score : $score pts',
+                  'Score : ${score + widget.scoreJeu} pts',
                   textAlign: TextAlign.right,
                   style: TextStyle(
                     fontSize: 0.04 * screenWidth,

@@ -71,7 +71,7 @@ Widget build(BuildContext context) {
               Container(
                 padding: EdgeInsets.only(right: 0.03 * screenWidth),
                 child: Text(
-                  'Score : ${quiz.score} pts',
+                  'Score : ${quiz.score+widget.scoreJeu} pts',
                   textAlign: TextAlign.right,
                   style: TextStyle(
                     fontSize: 0.04 * screenWidth,

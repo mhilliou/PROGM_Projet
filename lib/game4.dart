@@ -11,7 +11,11 @@ class Game4 extends StatefulWidget {
   final int nbJeu;
   final int scoreJeu;
 
-  const Game4({super.key, required this.aleatoire, required this.nbJeu, required this.scoreJeu});
+  const Game4(
+      {super.key,
+      required this.aleatoire,
+      required this.nbJeu,
+      required this.scoreJeu});
   @override
   _Game4State createState() => _Game4State();
 }
@@ -79,13 +83,17 @@ class _Game4State extends State<Game4> {
         score = 1;
       }
     }
-    !widget.aleatoire ? Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => EndGamePage(score: score)),
-    ) : Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => EndGamePageAleatoire(score: widget.scoreJeu + score, nbJeu: widget.nbJeu + 1)),
-    );
+    !widget.aleatoire
+        ? Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => EndGamePage(score: score)),
+          )
+        : Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => EndGamePageAleatoire(
+                    score: widget.scoreJeu + score, nbJeu: widget.nbJeu)),
+          );
   }
 
   void _startCountdown() {
@@ -124,6 +132,19 @@ class _Game4State extends State<Game4> {
                     );
                   },
                   icon: const Icon(Icons.arrow_back, color: Colors.black),
+                ),
+                Expanded(child: Container()),
+                Container(
+                  padding: EdgeInsets.only(right: 0.03 * screenWidth),
+                  child: Text(
+                    'Score : ${widget.scoreJeu} pts',
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      fontSize: 0.04 * screenWidth,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -166,8 +187,9 @@ class _Game4State extends State<Game4> {
                               ? Icons.check_circle
                               : Icons.cancel,
                           size: 0.17 * screenWidth,
-                          color:
-                              _isPhoneFlatImmediate ? Colors.green : Colors.black,
+                          color: _isPhoneFlatImmediate
+                              ? Colors.green
+                              : Colors.black,
                         ),
                       ],
                     ),
