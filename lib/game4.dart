@@ -86,7 +86,11 @@ class _Game4State extends State<Game4> {
     !widget.aleatoire
         ? Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => EndGamePage(score: score)),
+            MaterialPageRoute(
+                builder: (context) => EndGamePage(
+                      score: score,
+                      rejoue: Game4(aleatoire: false, nbJeu: 0, scoreJeu: 0),
+                    )),
           )
         : Navigator.push(
             context,

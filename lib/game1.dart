@@ -38,7 +38,9 @@ class _Game1State extends State<Game1> {
             ? Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => EndGamePage(score: scoreDef),
+                  builder: (context) => EndGamePage(
+                      score: scoreDef,
+                      rejoue: Game1(aleatoire: false, nbJeu: 0, scoreJeu: 0)),
                 ),
               )
             : Navigator.push(
