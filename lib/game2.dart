@@ -13,7 +13,8 @@ class Game2 extends StatefulWidget {
 class _Game2State extends State<Game2> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Scaffold(
+        backgroundColor: const Color.fromARGB(255, 255, 71, 71),
+        body: SafeArea(child: ListView()));
   }
 }
