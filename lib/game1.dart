@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:progm_projet/solo.dart';
+import 'package:progm_projet/solo/solo.dart';
 
 import 'endgame.dart';
 
@@ -33,92 +33,123 @@ class _Game1State extends State<Game1> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: const Color.fromARGB(255, 255, 71, 71),
-        body: SafeArea(
-          child: ListView(
+Widget build(BuildContext context) {
+  final double screenWidth = MediaQuery.of(context).size.width;
+  final double screenHeight = MediaQuery.of(context).size.height;
+
+  return Scaffold(
+    backgroundColor: const Color.fromARGB(255, 255, 71, 71),
+    body: SafeArea(
+      child: ListView(
+        children: [
+          Row(
             children: [
-              Row(
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SoloPage()));
-                    },
-                    icon: const Icon(Icons.arrow_back, color: Colors.black),
-                  ),
-                  Expanded(child: Container()),
-                  Container(
-                    padding: const EdgeInsets.only(right: 15),
-                    child: Text(
-                      'Score : ${quiz.score} pts',
-                      textAlign: TextAlign.right,
-                      style: const TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                  ),
-                ],
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SoloPage()),
+                  );
+                },
+                icon: const Icon(Icons.arrow_back, color: Colors.black),
               ),
+              Expanded(child: Container()),
               Container(
-                height: 200,
-                padding: const EdgeInsets.only(top: 70, bottom: 30),
+                padding: EdgeInsets.only(right: 0.03 * screenWidth),
                 child: Text(
-                  quiz.getQuestion(),
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                ),
-              ),
-              Container(
-                height: 90,
-                padding: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
-                child: ElevatedButton(
-                  onPressed: () {
-                    checkAnswer(quiz.getAnswer1());
-                  },
-                  child: Text(
-                    quiz.getAnswer1(),
-                    style: const TextStyle(fontSize: 17, color: Colors.black),
+                  'Score : ${quiz.score} pts',
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    fontSize: 0.04 * screenWidth,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
                   ),
                 ),
               ),
-              Container(
-                height: 90,
-                padding: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
-                child: ElevatedButton(
-                  onPressed: () {
-                    checkAnswer(quiz.getAnswer2());
-                  },
-                  child: Text(
-                    quiz.getAnswer2(),
-                    style: const TextStyle(fontSize: 17, color: Colors.black),
-                  ),
-                ),
-              ),
-              Container(
-                height: 90,
-                padding: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
-                child: ElevatedButton(
-                  onPressed: () {
-                    checkAnswer(quiz.getAnswer3());
-                  },
-                  child: Text(
-                    quiz.getAnswer3(),
-                    style: const TextStyle(fontSize: 17, color: Colors.black),
-                  ),
-                ),
-              )
             ],
           ),
-        ));
-  }
+          Container(
+            height: 0.27 * screenHeight,
+            padding: EdgeInsets.only(
+              top: 0.1 * screenHeight,
+              bottom: 0.05 * screenHeight,
+            ),
+            child: Text(
+              quiz.getQuestion(),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 0.06 * screenWidth,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          Container(
+            height: 0.1 * screenHeight,
+            padding: EdgeInsets.only(
+              left: 0.1 * screenWidth,
+              right: 0.1 * screenWidth,
+              bottom: 0.05 * screenHeight,
+            ),
+            child: ElevatedButton(
+              onPressed: () {
+                checkAnswer(quiz.getAnswer1());
+              },
+              child: Text(
+                quiz.getAnswer1(),
+                style: TextStyle(
+                  fontSize: 0.04 * screenWidth,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          ),
+          Container(
+            height: 0.1 * screenHeight,
+            padding: EdgeInsets.only(
+              left: 0.1 * screenWidth,
+              right: 0.1 * screenWidth,
+              bottom: 0.05 * screenHeight,
+            ),
+            child: ElevatedButton(
+              onPressed: () {
+                checkAnswer(quiz.getAnswer2());
+              },
+              child: Text(
+                quiz.getAnswer2(),
+                style: TextStyle(
+                  fontSize: 0.04 * screenWidth,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          ),
+          Container(
+            height: 0.1 * screenHeight,
+            padding: EdgeInsets.only(
+              left: 0.1 * screenWidth,
+              right: 0.1 * screenWidth,
+              bottom: 0.05 * screenHeight,
+            ),
+            child: ElevatedButton(
+              onPressed: () {
+                checkAnswer(quiz.getAnswer3());
+              },
+              child: Text(
+                quiz.getAnswer3(),
+                style: TextStyle(
+                  fontSize: 0.04 * screenWidth,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
 }
 
 class Question {
