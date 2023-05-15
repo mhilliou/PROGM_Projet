@@ -4,21 +4,21 @@ import 'package:progm_projet/solo/solo.dart';
 import 'endgame.dart';
 import 'endgamealeatoire.dart';
 
-class Game1 extends StatefulWidget {
+class Game8 extends StatefulWidget {
   final bool aleatoire;
   final int nbJeu;
   final int scoreJeu;
-  const Game1(
+  const Game8(
       {super.key,
       required this.aleatoire,
       required this.nbJeu,
       required this.scoreJeu});
 
   @override
-  State<Game1> createState() => _Game1State();
+  State<Game8> createState() => _Game8State();
 }
 
-class _Game1State extends State<Game1> {
+class _Game8State extends State<Game8> {
   Quiz quiz = Quiz();
 
   void checkAnswer(String answer) {
@@ -96,14 +96,8 @@ class _Game1State extends State<Game1> {
                 top: 0.1 * screenHeight,
                 bottom: 0.05 * screenHeight,
               ),
-              child: Text(
-                quiz.getQuestion(),
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 0.06 * screenWidth,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+              child: Image.asset(
+                quiz.getFlag(), // Ajuster l'image à la taille du Container
               ),
             ),
             Container(
@@ -196,7 +190,7 @@ class Question {
 }
 
 class Quiz {
-  List<Question> questions = [
+  /*List<Question> questions = [
     Question(
         'Quel est le 6e Président de la Ve République française ?',
         'Jacques Chirac',
@@ -269,6 +263,214 @@ class Quiz {
         '1967'),
     Question('Quelle est la monnaie en Algérie ?', 'Le dinar', 'Le dirham',
         'Le franc algérien', 'Le dinar'),
+  ];*/
+
+  List<Question> questions = [];
+  List<String> pays = [
+    'Afghanistan',
+    'Afrique du Sud',
+    'Albanie',
+    'Algérie',
+    'Allemagne',
+    'Andorre',
+    'Angleterre',
+    'Angola',
+    'Antigua-et-Barbuda',
+    'Arabie Saoudite',
+    'Argentine',
+    'Arménie',
+    'Australie',
+    'Autriche',
+    'Azerbaïdjan',
+    'Bahamas',
+    'Bahreïn',
+    'Bangladesh',
+    'Barbade',
+    'Belgique',
+    'Belize',
+    'Bénin',
+    'Bermudes',
+    'Bhoutan',
+    'Biélorussie',
+    'Bolivie',
+    'Bosnie-Herzégovine',
+    'Botswana',
+    'Brésil',
+    'Brunei',
+    'Bulgarie',
+    'Burkina Faso',
+    'Burundi',
+    'Cambodge',
+    'Cameroun',
+    'Canada',
+    'Cap-Vert',
+    'Centrafrique',
+    'Chili',
+    'Chine',
+    'Chypre',
+    'Colombie',
+    'Comores',
+    'Congo',
+    'Corée du Nord',
+    'Corée du Sud',
+    'Costa Rica',
+    'Côte d\'Ivoire',
+    'Croatie',
+    'Cuba',
+    'Danemark',
+    'Djibouti',
+    'Dominique',
+    'Écosse',
+    'Égypte',
+    'Émirats Arabes Unis',
+    'Équateur',
+    'Érythrée',
+    'Espagne',
+    'Estonie',
+    'Eswatini',
+    'États-Unis',
+    'Éthiopie',
+    'Fidji',
+    'Finlande',
+    'France',
+    'Gabon',
+    'Gambie',
+    'Géorgie',
+    'Ghana',
+    'Gibraltar',
+    'Grèce',
+    'Grenade',
+    'Guatemala',
+    'Guinée',
+    'Guinée Équatoriale',
+    'Guinée-Bissau',
+    'Guyana',
+    'Haïti',
+    'Honduras',
+    'Hong Kong',
+    'Hongrie',
+    'Îles Cook',
+    'Îles Marshall',
+    'Îles Salomon',
+    'Inde',
+    'Indonésie',
+    'Irak',
+    'Iran',
+    'Irlande',
+    'Irlande du Nord',
+    'Islande',
+    'Israël',
+    'Italie',
+    'Jamaïque',
+    'Japon',
+    'Jordanie',
+    'Kazakhstan',
+    'Kenya',
+    'Kirghizistan',
+    'Kiribati',
+    'Kosovo',
+    'Koweït',
+    'Laos',
+    'Lesotho',
+    'Lettonie',
+    'Liban',
+    'Liberia',
+    'Libye',
+    'Liechtenstein',
+    'Lituanie',
+    'Luxembourg',
+    'Macédoine du Nord',
+    'Madagascar',
+    'Malaisie',
+    'Malawi',
+    'Maldives',
+    'Mali',
+    'Malte',
+    'Maroc',
+    'Maurice',
+    'Mauritanie',
+    'Mexique',
+    'Micronésie',
+    'Moldavie',
+    'Monaco',
+    'Mongolie',
+    'Monténégro',
+    'Mozambique',
+    'Myanmar',
+    'Namibie',
+    'Nauru',
+    'Népal',
+    'Nicaragua',
+    'Niger',
+    'Nigéria',
+    'Niue',
+    'Norvège',
+    'Nouvelle-Zélande',
+    'Oman',
+    'Ouganda',
+    'Ouzbékistan',
+    'Pakistan',
+    'Palaos',
+    'Palestine',
+    'Panama',
+    'Papouasie-Nouvelle-Guinée',
+    'Paraguay',
+    'Pays de Galles',
+    'Pays-Bas',
+    'Pérou',
+    'Philippines',
+    'Pologne',
+    'Portugal',
+    'Qatar',
+    'République Démocratique du Congo',
+    'République Dominicaine',
+    'République Tchèque',
+    'Roumanie',
+    'Royaume-Uni',
+    'Russie',
+    'Rwanda',
+    'Saint-Kitts-et-Nevis',
+    'Saint-Marin',
+    'Saint-Vincent-et-les-Grenadines',
+    'Salvador',
+    'Samoa',
+    'Sao Tomé-et-Principe',
+    'Sénégal',
+    'Serbie',
+    'Seychelles',
+    'Sierra Leone',
+    'Singapour',
+    'Slovaquie',
+    'Slovénie',
+    'Somalie',
+    'Soudan',
+    'Soudan du Sud',
+    'Sri Lanka',
+    'Suède',
+    'Suisse',
+    'Suriname',
+    'Syrie',
+    'Tadjikistan',
+    'Tanzanie',
+    'Tchad',
+    'Thaïlande',
+    'Timor-Oriental',
+    'Togo',
+    'Tonga',
+    'Trinité-et-Tobago',
+    'Tunisie',
+    'Turkménistan',
+    'Turquie',
+    'Tuvalu',
+    'Ukraine',
+    'Uruguay',
+    'Vanuatu',
+    'Vatican',
+    'Vénézuela',
+    'Viêt Nam',
+    'Yémen',
+    'Zambie',
+    'Zimbabwe',
   ];
   int score = 0;
   int questionNumber = 0;
@@ -276,8 +478,33 @@ class Quiz {
   String statutReponse = '';
 
   Quiz() {
+    flagQuiz();
     questionNumber = Random().nextInt(questions.length);
     alreadyAsked.add(questionNumber);
+  }
+
+  void flagQuiz() {
+    for (var element in pays) {
+      int random = Random().nextInt(3);
+      String pays1 = pays[Random().nextInt(pays.length)];
+      String pays2 = pays[Random().nextInt(pays.length)];
+      while (pays2.contains(pays1) |
+          pays1.contains(element) |
+          pays2.contains(element)) {
+        pays1 = pays[Random().nextInt(pays.length)];
+        pays2 = pays[Random().nextInt(pays.length)];
+      }
+      if (random == 0) {
+        questions.add(Question('assets/images/flags/$element.png', pays1, pays2,
+            element, element));
+      } else if (random == 1) {
+        questions.add(Question('assets/images/flags/$element.png', element,
+            pays1, pays2, element));
+      } else {
+        questions.add(Question('assets/images/flags/$element.png', pays2,
+            element, pays1, element));
+      }
+    }
   }
 
   String getAnswer1() {
@@ -292,7 +519,7 @@ class Quiz {
     return questions[questionNumber].answer3;
   }
 
-  String getQuestion() {
+  String getFlag() {
     return questions[questionNumber].question;
   }
 

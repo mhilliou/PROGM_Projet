@@ -7,6 +7,7 @@ import 'game4.dart';
 import 'game5.dart';
 import 'game6.dart';
 import 'game7.dart';
+import 'game8.dart';
 import 'solo/solo.dart';
 
 class Card {
@@ -25,31 +26,67 @@ class MiniJeu extends StatelessWidget {
     Card(image: AssetImage('assets/images/image5.png'), title: 'Angle X'),
     Card(image: AssetImage('assets/images/image6.png'), title: 'Gestes V'),
     Card(image: AssetImage('assets/images/image7.png'), title: 'Schéma X'),
+    Card(image: AssetImage('assets/images/image8.png'), title: 'Drapeaux X'),
     // ...
   ];
 
   void handleCardTap(String title, BuildContext context) {
     switch (title) {
       case 'Quiz V':
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Game1(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    Game1(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
         break;
       case 'Course V':
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Game2(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    Game2(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
         break;
       case 'Voix X':
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Game3(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    Game3(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
         break;
       case 'Plat V':
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Game4(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    Game4(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
         break;
       case 'Angle X':
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Game5(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    Game5(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
         break;
       case 'Gestes V':
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Game6(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    Game6(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
         break;
       case 'Schéma X':
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Game7(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    Game7(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
+        break;
+      case 'Drapeaux X':
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    Game8(aleatoire: false, nbJeu: 0, scoreJeu: 0)));
         break;
     }
   }
@@ -59,8 +96,15 @@ class MiniJeu extends StatelessWidget {
       onTap: () => handleCardTap(card.title, context),
       child: Column(
         children: [
-          Image(image: card.image, width: 0.2 * MediaQuery.of(context).size.width, height: 0.2 * MediaQuery.of(context).size.width),
-          Text(card.title, style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
+          Image(
+              image: card.image,
+              width: 0.2 * MediaQuery.of(context).size.width,
+              height: 0.2 * MediaQuery.of(context).size.width),
+          Text(card.title,
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold)),
         ],
       ),
     );
@@ -69,7 +113,7 @@ class MiniJeu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
-    
+
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 71, 71),
       body: SafeArea(
@@ -79,7 +123,10 @@ class MiniJeu extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const SoloPage()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SoloPage()));
                   },
                   icon: const Icon(Icons.arrow_back, color: Colors.black),
                 ),
@@ -88,9 +135,12 @@ class MiniJeu extends StatelessWidget {
             Expanded(
               child: GridView.count(
                 crossAxisCount: 2, // Nombre de carrés par ligne
-                crossAxisSpacing: 0.02 * screenWidth, // Espacement horizontal entre les carrés
-                mainAxisSpacing: 0.02 * screenWidth, // Espacement vertical entre les carrés
-                children: cards.map((card) => buildCard(card, context)).toList(),
+                crossAxisSpacing: 0.02 *
+                    screenWidth, // Espacement horizontal entre les carrés
+                mainAxisSpacing:
+                    0.02 * screenWidth, // Espacement vertical entre les carrés
+                children:
+                    cards.map((card) => buildCard(card, context)).toList(),
               ),
             ),
           ],
