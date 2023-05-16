@@ -6,7 +6,7 @@ import 'adversaire.dart';
 import 'endgame.dart';
 import 'endgamealeatoire.dart';
 
-int scoreF = 0;
+int scoreFinal = 0;
 
 class Game1Multi extends StatefulWidget {
   final bool aleatoire;
@@ -18,14 +18,12 @@ class Game1Multi extends StatefulWidget {
   final AdversairePage adversairePage;
   const Game1Multi({super.key, required this.aleatoire, required this.nbJeu, required this.scoreJeu, required this.flutterP2pConnectionPlugin, this.pseudo, this.wifiP2PInfo, required this.adversairePage});
   
-  // récupérer la fonction getScore créé dans quiz
-  int getScore() {
-    print(scoreF);
-    return scoreF;
-  }
-
   @override
   State<Game1Multi> createState() => _Game1MultiState();
+
+  int getScore() {
+    return scoreFinal;
+  }
 }
 
 class _Game1MultiState extends State<Game1Multi> {
@@ -38,7 +36,6 @@ class _Game1MultiState extends State<Game1Multi> {
 
   Future<void> isFinished() {
     print("finished");
-    print(widget.adversairePage.flutterP2pConnectionPlugin.groupInfo().toString());
     return widget.adversairePage.callsendMessage('score:${quiz.score}');
   }
 
@@ -350,11 +347,12 @@ class Quiz {
   }
 
   int getScore() {
-    scoreF = score;
+    scoreFinal = score;
     return score;
   }
 
   void reset() {
+    scoreFinal = 0;
     score = 0;
     questionNumber = 0;
     alreadyAsked = [];

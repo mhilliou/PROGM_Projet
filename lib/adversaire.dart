@@ -219,18 +219,17 @@ class _AdversairePageState extends State<AdversairePage> {
 
   Future sendMessage(String text) async {
     print("text $text");
-    print("widget ${widget.flutterP2pConnectionPlugin.groupInfo().toString()}");
     widget.flutterP2pConnectionPlugin.sendStringToSocket(text);
     List<String> splitted = text.split(":");
     if(splitted.first == "score") {
-              scoreAdversaire = int.parse(splitted[1]);
+              //scoreAdversaire = int.parse(splitted[1]);
               print('page score');
               Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) => EndGameMultiPage(
-                          score: game1!.getScore(),
-                          scoreAdversaire: scoreAdversaire!,
+                          score: int.parse(splitted[1]),//game1!.getScore(),
+                          scoreAdversaire: scoreAdversaire ?? 0,
                           pseudo: widget.pseudo,
                           adversaire: adversaire,
                           wifiP2PInfo: widget.wifiP2PInfo,
