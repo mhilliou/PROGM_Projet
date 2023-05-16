@@ -5,8 +5,10 @@ import 'game1.dart';
 
 class EndGamePage extends StatelessWidget {
   final int score;
+  final Widget rejoue;
 
-  const EndGamePage({Key? key, required this.score}) : super(key: key);
+  const EndGamePage({Key? key, required this.score, required this.rejoue})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +75,7 @@ class EndGamePage extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const Game1(aleatoire: false, nbJeu: 0, scoreJeu: 0)),
+                        MaterialPageRoute(builder: (context) => rejoue),
                       );
                     },
                     child: Text(
@@ -98,7 +100,8 @@ class EndGamePage extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const SoloPage()),
+                        MaterialPageRoute(
+                            builder: (context) => const SoloPage()),
                       );
                     },
                     child: Text(

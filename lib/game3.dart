@@ -44,8 +44,13 @@ class _Game3State extends State<Game3> {
             ? Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) =>
-                        EndGamePage(score: (volume * 10).round())))
+                    builder: (context) => EndGamePage(
+                        score: (volume * 10).round(),
+                        rejoue: Game3(
+                          aleatoire: false,
+                          nbJeu: 0,
+                          scoreJeu: 0,
+                        ))))
             : Navigator.push(
                 context,
                 MaterialPageRoute(
