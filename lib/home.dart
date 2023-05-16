@@ -29,7 +29,8 @@ class HomePage extends StatelessWidget {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: const Color.fromARGB(255, 255, 71, 71),
-                          border: Border.all(color: const Color.fromARGB(255, 255, 136, 136)),
+                          border: Border.all(
+                              color: const Color.fromARGB(255, 255, 136, 136)),
                         ),
                       ),
                     ),
@@ -44,51 +45,74 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     const Text(
-                      'NomJeu',
+                      'QuickPlay',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontFamily: 'Signatra', fontSize: 100, color: Colors.white),
+                      style: TextStyle(
+                          fontFamily: 'Signatra',
+                          fontSize: 100,
+                          color: Colors.white),
                     ),
                   ],
                 ),
                 SizedBox(height: screenHeight * 0.15),
                 Container(
-                  padding: EdgeInsets.only(bottom: 10, left: screenWidth * 0.1, right: screenWidth * 0.1),
+                  padding: EdgeInsets.only(
+                      bottom: 10,
+                      left: screenWidth * 0.1,
+                      right: screenWidth * 0.1),
                   height: screenHeight * 0.09,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const SoloPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SoloPage()));
                     },
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(screenHeight * 0.09),
+                          borderRadius:
+                              BorderRadius.circular(screenHeight * 0.09),
                         ),
                       ),
                     ),
                     child: const Text(
                       'JOUER',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
                     ),
                   ),
                 ),
                 SizedBox(height: screenHeight * 0.02),
                 Container(
-                  padding: EdgeInsets.only(bottom: 10, left: screenWidth * 0.1, right: screenWidth * 0.1),
+                  padding: EdgeInsets.only(
+                      bottom: 10,
+                      left: screenWidth * 0.1,
+                      right: screenWidth * 0.1),
                   height: screenHeight * 0.09,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const MultijoueursPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const MultijoueursPage()));
                     },
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(screenHeight * 0.09),
+                          borderRadius:
+                              BorderRadius.circular(screenHeight * 0.09),
                         ),
                       ),
                     ),
                     child: const Text(
                       'MULTIJOUEUR',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
                     ),
                   ),
                 ),
