@@ -229,7 +229,7 @@ class _AdversairePageState extends State<AdversairePage> {
                   MaterialPageRoute(
                       builder: (context) => EndGameMultiPage(
                           score: int.parse(splitted[1]),//game1!.getScore(),
-                          scoreAdversaire: scoreAdversaire!,
+                          scoreAdversaire: scoreAdversaire ?? 0,
                           pseudo: widget.pseudo,
                           adversaire: adversaire,
                           wifiP2PInfo: widget.wifiP2PInfo,
